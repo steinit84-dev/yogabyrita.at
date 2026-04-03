@@ -315,6 +315,35 @@
       .hamburger { display: flex; }
       section { padding: 4rem 6vw; }
     }
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(42,40,34,.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--cream); border-radius: 4px;
+      max-width: 720px; width: 100%; max-height: 85vh;
+      overflow-y: auto; padding: 3rem; position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      font-size: 1.6rem; cursor: pointer; color: var(--ink-lt);
+      background: none; border: none; line-height: 1;
+    }
+    .modal-close:hover { color: var(--ink); }
+    .modal-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem;
+    }
+    .modal-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 400; color: var(--ink); margin: 1.8rem 0 .5rem;
+    }
+    .modal-box p { font-size: .88rem; font-weight: 300; line-height: 1.8; color: var(--ink-lt); margin-bottom: .8rem; }
+    .modal-box a { color: var(--sage); }
+
     @media (max-width: 580px) {
       .hero-badges { gap: 1.3rem; }
       .pricing-grid { grid-template-columns: 1fr; }
@@ -536,7 +565,7 @@
         <div class="contact-icon">✉️</div>
         <div class="contact-item-text">
           <span class="contact-item-label">E-Mail</span>
-          <span class="contact-item-value"><a href="mailto:hello@yogabyrita.at">hello@yogabyrita.at</a></span>
+          <span class="contact-item-value"><a href="/cdn-cgi/l/email-protection#81e9e4ededeec1f8eee6e0e3f8f3e8f5e0afe0f5"><span class="__cf_email__" data-cfemail="a8c0cdc4c4c7e8d1c7cfc9cad1dac1dcc986c9dc">[email&#160;protected]</span></a></span>
         </div>
       </div>
       <div class="contact-item">
@@ -549,7 +578,7 @@
     </div>
   </div>
   <div class="reveal">
-    <form class="contact-form" onsubmit="submitForm(event)">
+    <form class="contact-form" onsubmit="submitForm(event)" action="https://formspree.io/f/xpwzgkpw" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label>Vorname</label>
@@ -601,9 +630,9 @@
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 Yoga by Rita · Oberloisdorf</div>
     <div class="footer-legal">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-      <a href="#">AGB</a>
+      <a href="#" onclick="openModal('impressum');return false;">Impressum</a>
+      <a href="#" onclick="openModal('datenschutz');return false;">Datenschutz</a>
+      <a href="#" onclick="openModal('agb');return false;">AGB</a>
     </div>
   </div>
 </footer>
@@ -685,5 +714,105 @@
     e.target.querySelector('button').style.display = 'none';
   }
 </script>
+
+<!-- IMPRESSUM MODAL -->
+<div class="modal-overlay" id="modal-impressum" onclick="closeOnOverlay(event, 'impressum')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('impressum')">✕</button>
+    <h2>Impressum</h2>
+    <div style="width:40px;height:1px;background:var(--stone);margin:.5rem 0 1.5rem;"></div>
+    <h3>Angaben gemäß § 5 ECG</h3>
+    <p><strong>Rita Gansrigler</strong><br>
+    Feldgasse 11<br>
+    7451 Oberloisdorf<br>
+    Österreich</p>
+    <p><strong>E-Mail:</strong> <a href="mailto:rita.gansrigler@gmx.at">rita.gansrigler@gmx.at</a></p>
+    <h3>Unternehmensgegenstand</h3>
+    <p>Yogaunterricht und yogabezogene Dienstleistungen</p>
+    <h3>Berufsbezeichnung</h3>
+    <p>Yogalehrerin (Berufsbezeichnung verliehen in Österreich)</p>
+    <h3>Aufsichtsbehörde</h3>
+    <p>Bezirkshauptmannschaft Oberpullendorf</p>
+    <h3>Haftungsausschluss</h3>
+    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehme ich keine Gewähr. Als Diensteanbieter bin ich gemäß § 7 Abs.1 ECG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
+    <h3>Urheberrecht</h3>
+    <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ MODAL -->
+<div class="modal-overlay" id="modal-datenschutz" onclick="closeOnOverlay(event, 'datenschutz')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('datenschutz')">✕</button>
+    <h2>Datenschutzerklärung</h2>
+    <div style="width:40px;height:1px;background:var(--stone);margin:.5rem 0 1.5rem;"></div>
+    <h3>1. Verantwortliche Person</h3>
+    <p>Rita Gansrigler, Feldgasse 11, 7451 Oberloisdorf<br>
+    E-Mail: <a href="mailto:rita.gansrigler@gmx.at">rita.gansrigler@gmx.at</a></p>
+    <h3>2. Welche Daten wir erheben</h3>
+    <p>Wenn Sie das Kontaktformular auf dieser Website verwenden, werden folgende Daten erhoben: Vorname, Nachname, E-Mail-Adresse, der gewünschte Kurs sowie Ihre Nachricht.</p>
+    <h3>3. Zweck der Datenverarbeitung</h3>
+    <p>Ihre Daten werden ausschließlich zur Beantwortung Ihrer Anfrage und zur Abwicklung von Kursbuchungen verwendet. Eine Weitergabe an Dritte findet nicht statt.</p>
+    <h3>4. Rechtsgrundlage</h3>
+    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
+    <h3>5. Speicherdauer</h3>
+    <p>Ihre Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind – in der Regel nach vollständiger Bearbeitung Ihrer Anfrage, spätestens jedoch nach 3 Jahren.</p>
+    <h3>6. Hosting</h3>
+    <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Besuch der Website werden automatisch technische Daten (IP-Adresse, Browsertyp, Zugriffszeit) im Rahmen der GitHub-Infrastruktur verarbeitet. Weitere Informationen finden Sie in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">Datenschutzerklärung von GitHub</a>.</p>
+    <h3>7. Cookies</h3>
+    <p>Diese Website verwendet keine Tracking-Cookies oder Analyse-Tools. Es werden keine personenbezogenen Daten für Werbezwecke verarbeitet.</p>
+    <h3>8. Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO) sowie das Recht auf Datenübertragbarkeit (Art. 20 DSGVO). Zur Ausübung Ihrer Rechte wenden Sie sich bitte per E-Mail an <a href="mailto:rita.gansrigler@gmx.at">rita.gansrigler@gmx.at</a>.</p>
+    <h3>9. Beschwerderecht</h3>
+    <p>Sie haben das Recht, sich bei der österreichischen Datenschutzbehörde zu beschweren:<br>
+    Österreichische Datenschutzbehörde, Barichgasse 40–42, 1030 Wien<br>
+    <a href="https://www.dsb.gv.at" target="_blank">www.dsb.gv.at</a></p>
+    <p style="margin-top:1.5rem;font-size:.78rem;color:var(--stone);">Stand: April 2025</p>
+  </div>
+</div>
+
+<!-- AGB MODAL -->
+<div class="modal-overlay" id="modal-agb" onclick="closeOnOverlay(event, 'agb')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('agb')">✕</button>
+    <h2>Allgemeine Geschäftsbedingungen</h2>
+    <div style="width:40px;height:1px;background:var(--stone);margin:.5rem 0 1.5rem;"></div>
+    <h3>1. Geltungsbereich</h3>
+    <p>Diese AGB gelten für alle Kursbuchungen und Dienstleistungen von Rita Gansrigler, Feldgasse 11, 7451 Oberloisdorf.</p>
+    <h3>2. Anmeldung & Buchung</h3>
+    <p>Die Anmeldung zu Kursen erfolgt per E-Mail oder Kontaktformular. Eine verbindliche Buchung kommt mit der Bestätigung durch Rita Gansrigler zustande.</p>
+    <h3>3. Preise & Zahlung</h3>
+    <p>Die Bezahlung erfolgt vor Kursbeginn in bar oder per Überweisung. Der 10er-Block ist ab Kaufdatum 1 Jahr gültig und nicht auf andere Personen übertragbar.</p>
+    <h3>4. Stornierung durch den Teilnehmer</h3>
+    <p>Stornierungen sind bis 24 Stunden vor Kursbeginn kostenlos möglich. Bei späteren Absagen oder Nichterscheinen wird die volle Kursgebühr verrechnet. Im Krankheitsfall wird auf Kulanz reagiert.</p>
+    <h3>5. Stornierung durch die Kursleiterin</h3>
+    <p>Bei zu geringer Teilnehmerzahl oder Verhinderung der Kursleiterin wird der Kurs abgesagt und bereits bezahlte Beträge werden vollständig rückerstattet.</p>
+    <h3>6. Haftung</h3>
+    <p>Die Teilnahme an den Kursen erfolgt auf eigene Gefahr. Für Personen mit gesundheitlichen Einschränkungen wird empfohlen, vor Kursbeginn ärztlichen Rat einzuholen. Rita Gansrigler übernimmt keine Haftung für Verletzungen oder Sachschäden.</p>
+    <h3>7. Gesundheitliche Eignung</h3>
+    <p>Teilnehmerinnen und Teilnehmer versichern, gesundheitlich in der Lage zu sein, am Kurs teilzunehmen. Bestehende Verletzungen oder Erkrankungen sind vor Kursbeginn mitzuteilen.</p>
+    <h3>8. Anwendbares Recht</h3>
+    <p>Es gilt österreichisches Recht. Gerichtsstand ist Oberpullendorf.</p>
+    <p style="margin-top:1.5rem;font-size:.78rem;color:var(--stone);">Stand: April 2025</p>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(e, id) {
+    if (e.target === e.currentTarget) closeModal(id);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      ['impressum','datenschutz','agb'].forEach(closeModal);
+    }
+  });
+</script>
 </body>
-</html>
