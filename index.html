@@ -363,7 +363,6 @@
     <li><a href="#preise">Preise</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <a class="nav-cta" href="#kontakt">Jetzt buchen</a>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -578,40 +577,6 @@
     </div>
   </div>
   <div class="reveal">
-    <form class="contact-form" onsubmit="submitForm(event)" action="https://formspree.io/f/mreoyzzp" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Vorname</label>
-          <input type="text" placeholder="Anna" required />
-        </div>
-        <div class="form-group">
-          <label>Nachname</label>
-          <input type="text" placeholder="Müller" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label>E-Mail</label>
-        <input type="email" placeholder="anna@beispiel.at" required />
-      </div>
-      <div class="form-group">
-        <label>Gewünschter Kurs</label>
-        <select>
-          <option value="">Bitte wählen …</option>
-          <option>Schnupperstunde (10 €)</option>
-          <option>Yin Yoga</option>
-          <option>Hatha Yoga</option>
-          <option>Einzelstunde (65 €)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Nachricht</label>
-        <textarea placeholder="Hallo Rita, ich würde gerne …"></textarea>
-      </div>
-      <button class="form-submit" type="submit">Nachricht senden →</button>
-      <div class="form-success" id="formSuccess">
-        ✓ Danke! Ich melde mich innerhalb von 24 Stunden bei dir.
-      </div>
-    </form>
   </div>
 </section>
 
@@ -664,14 +629,11 @@
 
   // SCHEDULE DATA
   const courses = [
-    { day:'Montag',    date:'07.04.2025', type:'yin',   label:'Yin Yoga',           time:'18:30 – 19:45', level:'Alle Levels',                 spots: 0  },
-    { day:'Dienstag',  date:'08.04.2025', type:'hatha', label:'Hatha Yoga',         time:'19:00 – 20:15', level:'Anfänger',                    spots: 0 },
-    { day:'Freitag',   date:'11.04.2025', type:'yin',   label:'Yin Yoga',           time:'17:30 – 18:45', level:'Alle Levels',                 spots: 0  },
-    { day:'Samstag',   date:'12.04.2025', type:'hatha', label:'Hatha für Anfänger', time:'10:00 – 11:30', level:'Anfänger',                    spots: 0 },
-    { day:'Montag',    date:'14.04.2025', type:'yin',   label:'Yin Yoga',           time:'18:30 – 19:45', level:'Alle Levels',                 spots: 0 },
-    { day:'Dienstag',  date:'15.04.2025', type:'hatha', label:'Hatha Yoga',         time:'19:00 – 20:15', level:'Anfänger & Fortgeschrittene', spots: 0  },
-    { day:'Freitag',   date:'18.04.2025', type:'yin',   label:'Yin Yoga',           time:'17:30 – 18:45', level:'Alle Levels',                 spots: 0  },
-    { day:'Samstag',   date:'19.04.2025', type:'hatha', label:'Hatha für Anfänger', time:'10:00 – 11:30', level:'Anfänger',                    spots: 0  },
+    { day:'Montag',    date:'14.04.2026', type:'yin',   label:'Yin Yoga',           time:'-', level:'Alle Levels',                 spots: 5  },
+    { day:'Dienstag',  date:'21.04.2026', type:'yin', label:'Yin Yoga',         time:'-', level:'Alle Levels',                    spots: 5 },
+    { day:'Freitag',   date:'28.04.2026', type:'yin',   label:'Yin Yoga',           time:'-', level:'Alle Levels',                 spots: 5  },
+    { day:'Samstag',   date:'05.05.2026', type:'yin', label:'Yin Yoga', time:'-', level:'Alle Levels',                    spots: 5 },
+    { day:'Montag',    date:'12.05.2026', type:'yin',   label:'Yin Yoga',           time:'-', level:'Alle Levels',                 spots: 5 },
   ];
 
   function renderTable(filter) {
