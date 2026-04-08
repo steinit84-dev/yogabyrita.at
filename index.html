@@ -349,6 +349,61 @@
       .pricing-grid { grid-template-columns: 1fr; }
       .schedule-table { font-size: .8rem; }
     }
+
+    /* REFERENZ POPUP */
+    .ref-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(42,40,34,.75); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem; animation: fadeIn .4s ease;
+    }
+    .ref-box {
+      background: var(--cream); border-radius: 4px;
+      max-width: 560px; width: 100%;
+      padding: 3rem 2.5rem 2.5rem;
+      position: relative; text-align: center;
+      box-shadow: 0 24px 64px rgba(0,0,0,.18);
+    }
+    .ref-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; letter-spacing: .08em;
+      color: var(--ink); margin-bottom: 1.5rem; display: block;
+    }
+    .ref-logo span { color: var(--sage); font-style: italic; }
+    .ref-badge {
+      display: inline-block;
+      font-size: .68rem; font-weight: 500; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--sage);
+      border: 1px solid var(--sage); padding: .3rem .9rem;
+      border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    .ref-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300; color: var(--ink);
+      line-height: 1.25; margin-bottom: 1rem;
+    }
+    .ref-text {
+      font-size: .88rem; font-weight: 300; line-height: 1.8;
+      color: var(--ink-lt); margin-bottom: .6rem;
+    }
+    .ref-link {
+      font-size: .88rem; font-weight: 500; color: var(--sage);
+      text-decoration: none; border-bottom: 1px solid var(--sage-lt);
+      padding-bottom: 1px; transition: color .2s;
+    }
+    .ref-link:hover { color: var(--sage-dk); }
+    .ref-divider { width: 40px; height: 1px; background: var(--stone); margin: 1.5rem auto; }
+    .ref-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem; font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase;
+      background: var(--sage); color: var(--white);
+      border: none; padding: .85rem 2.2rem; border-radius: 2px;
+      cursor: pointer; margin-top: 1rem;
+      transition: background .2s, transform .15s;
+    }
+    .ref-btn:hover { background: var(--sage-dk); transform: translateY(-1px); }
+    .ref-note { font-size: .72rem; color: var(--stone); margin-top: 1rem; font-weight: 300; }
   </style>
 </head>
 <body>
@@ -771,3 +826,38 @@ function closeOnOverlay(event, name) {
   }
 }
   </script>
+<!-- REFERENZ HINWEIS POPUP -->
+<div class="ref-overlay" id="refPopup">
+  <div class="ref-box">
+    <span class="ref-logo">Yoga <span>by Rita</span></span>
+    <div class="ref-badge">Referenzprojekt</div>
+    <h2 class="ref-title">Diese Website dient<br>als Referenzobjekt</h2>
+    <div class="ref-divider"></div>
+    <p class="ref-text">
+      Diese Website wurde als <strong>Demonstrationsprojekt</strong> von
+      <a class="ref-link" href="https://www.mywebprofi.at" target="_blank">www.mywebprofi.at</a>
+      erstellt und dient ausschliesslich als Referenz fuer Webdesign-Dienstleistungen.
+    </p>
+    <p class="ref-text">
+      Saemtliche dargestellten Personen, Kurse, Termine, Preise und Kontaktdaten
+      sind <strong>fiktiv</strong> und entsprechen keiner realen Person
+      oder einem realen Unternehmen.
+    </p>
+    <button class="ref-btn" onclick="closeRefPopup()">Verstanden &ndash; Seite ansehen</button>
+    <p class="ref-note">
+      Professionelle Webseiten von
+      <a class="ref-link" href="https://www.mywebprofi.at" target="_blank">mywebprofi.at</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  function closeRefPopup() {
+    document.getElementById('refPopup').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.body.style.overflow = 'hidden';
+</script>
+
+</body>
+</html>
